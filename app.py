@@ -12,6 +12,7 @@ bot = Bot(ACCESS_TOKEN)
 
 #We will receive messages that Facebook sends our bot at this endpoint 
 @app.route("/", methods=['GET', 'POST'])
+
 def receive_message():
     if request.method == 'GET':
         """Before allowing people to message your bot, Facebook has implemented a verify token
@@ -56,6 +57,18 @@ def get_message():
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
+    bot.send_button_message(recepient_id,"This is a button text",[
+              {
+                "type": "postback",
+                "title": "Yes",
+                "payload": "get_options"
+              },
+              {
+                "type": "postback",
+                "title": "No",
+                "payload": "no_options"
+              }
+            ])
     return "success"
 
 if __name__ == "__main__":
