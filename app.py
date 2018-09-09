@@ -3,6 +3,7 @@ import random
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
+from pymessager.message import Messager
 
 app = Flask(__name__)
 
@@ -56,8 +57,8 @@ def get_message():
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, response)
-    bot.send_button_message(recepient_id,"This is a button text",[
+    # bot.send_text_message(recipient_id, response)
+    bot.send_button_message(recepient_id,response,[
               {
                 "type": "postback",
                 "title": "Yes",
@@ -69,7 +70,7 @@ def send_message(recipient_id, response):
                 "payload": "no_options"
               }
             ])
-    bot.send_text_message(recipient_id, response)
+    # bot.send_text_message(recipient_id, "After button")
     return "success"
 
 if __name__ == "__main__":
