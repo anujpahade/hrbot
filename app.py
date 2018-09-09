@@ -49,7 +49,7 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message():
-    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
+    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "Good to know you :)"]
     # return selected item to the user
     return random.choice(sample_responses)
 
@@ -69,6 +69,7 @@ def send_message(recipient_id, response):
                 "payload": "no_options"
               }
             ])
+    bot.send_text_message(recipient_id, response)
     return "success"
 
 if __name__ == "__main__":
