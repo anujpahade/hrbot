@@ -63,15 +63,26 @@ def send_message(recipient_id, response):
     # client.send_text(recipient_id, "Hello, I'm PyMessager.")
     bot.send_button_message(recipient_id,"Which category does it belong to?",[
               {
-                "type": "button",
-                "title": "Yes",
-                "payload": "get_options"
+                "type": "postback",
+                "title": "Leave",
+                "payload": "leave"
               },
               {
-                "type": "button",
-                "title": "No",
-                "payload": "no_options"
+                "type": "postback",
+                "title": "Complaint",
+                "payload": "complaint"
+              },
+              {
+                "type": "postback",
+                "title": "Finance",
+                "payload": "finance"
+              },
+              {
+                "type": "postback",
+                "title": "Event",
+                "payload": "fvent"
               }
+
             ])
     # bot.send_text_message(recipient_id, "After button")
     return "success"
