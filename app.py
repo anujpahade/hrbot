@@ -9,8 +9,10 @@ app = Flask(__name__)
 
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
-bot = Bot(ACCESS_TOKEN)
 
+bot = Bot(ACCESS_TOKEN)#PyMessenger
+
+client = Messager(ACCESS_TOKEN)#PyMesssager
 #We will receive messages that Facebook sends our bot at this endpoint 
 @app.route("/", methods=['GET', 'POST'])
 
@@ -58,18 +60,19 @@ def get_message():
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
     # bot.send_text_message(recipient_id, response)
-    bot.send_button_message(recepient_id,response,[
-              {
-                "type": "postback",
-                "title": "Yes",
-                "payload": "get_options"
-              },
-              {
-                "type": "postback",
-                "title": "No",
-                "payload": "no_options"
-              }
-            ])
+    client.send_text(recipient_id, "Hello, I'm Qwerty.")
+    # bot.send_button_message(recepient_id,response,[
+    #           {
+    #             "type": "postback",
+    #             "title": "Yes",
+    #             "payload": "get_options"
+    #           },
+    #           {
+    #             "type": "postback",
+    #             "title": "No",
+    #             "payload": "no_options"
+    #           }
+    #         ])
     # bot.send_text_message(recipient_id, "After button")
     return "success"
 
