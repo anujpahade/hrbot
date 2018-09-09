@@ -59,16 +59,16 @@ def get_message():
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, "Hello from PyMessenger")
+    # bot.send_text_message(recipient_id, "Hello from PyMessenger")
     # client.send_text(recipient_id, "Hello, I'm PyMessager.")
-    bot.send_button_message(recipient_id,response,[
+    bot.send_button_message(recipient_id,"Which category does it belong to?",[
               {
-                "type": "postback",
+                "type": "button",
                 "title": "Yes",
                 "payload": "get_options"
               },
               {
-                "type": "postback",
+                "type": "button",
                 "title": "No",
                 "payload": "no_options"
               }
